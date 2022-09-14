@@ -1,38 +1,283 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.links {
+  background-color: black;
+  font-size: 18px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.links > li {
+  padding: .5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.5em;
+  justify-content: center;
+}
+
+.search-and-cards {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.search-container {
+  width: auto;
+}
+
+.card {
+  text-align: center;
+  padding: 10px;
+  margin: 30px;
+  margin-bottom: auto;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.507);
+  font-weight: bold;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 20px;
+  position: relative;
+  width: 400px;
+  height: 586px;
+}
+
+.card > img {
+  border-radius: 10px;
+  opacity: 1;
+  display: flex;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.card:hover img {
+  opacity: 0.3;
+}
+
+.card:hover .details-container {
+  opacity: 1;
+}
+
+#guitar-details {
+  background-color: rgba(255, 255, 255, 0.507);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  min-width: 400px;
+}
+
+.details-container {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card > p {
+  background-color: rgba(0, 0, 0, 0.63);
+  border-radius: 12px;
+}
+#add-to-cart-btn, #delete-btn {
+  background-color: rgba(185, 54, 54, 0.726);
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 4px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form-container > form {
+  display: flex;
+  flex-direction: column;
+  min-width: 30%;
+  align-self: center;
+  border-style: solid;
+  padding: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-container > form > input {
+  text-align: center;
+  margin: 6px;
+  padding: 6px;
 }
+
+.form-container > form > button {
+  margin-top: 4px;
+  background-color: rgba(185, 54, 54, 0.726);
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 4px;
+  width: fit-content;
+  cursor: pointer;
+  align-self: center;
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.cart-container > h2, #order-btn {
+  color: rgba(255, 255, 255, 0.925);
+  width: fit-content;
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+  margin: 0;
+  margin-left: 6px;
+  margin-top: 6px;
+  font-size: 16px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  border: 0.08em solid;
+  height: fit-content;
+
+}
+
+.guitar-cart-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search-container input {
+  text-align: center;
+  width: 360px;
+  border-radius: 10px;
+  border-style: none;
+  padding: 4px;
+}
+
+.signup-container, .login-container-inner {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.719);
+  padding-bottom: 10px;
+}
+
+.signup-container > form, .login-container-inner > form {
+  display: flex;
+  flex-direction: column;
+  min-width: 30%;
+  align-self: center;
+  border-style: solid;
+  padding: 16px;
+}
+
+.signup-container > form > input, .login-container-inner > form > input {
+  text-align: center;
+  margin: 6px;
+  padding: 6px;
+}
+
+.signup-container > form > button, .login-container-inner > form > button {
+  margin-top: 4px;
+  background-color: rgba(185, 54, 54, 0.726);
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 4px;
+  width: fit-content;
+  cursor: pointer;
+  align-self: center;
+}
+
+.account-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.719);
+  padding-bottom: 10px;
+  justify-content: center;
+  min-height: 260px;
+}
+
+.account-container > button {
+  margin-top: 4px;
+  background-color: rgba(185, 54, 54, 0.726);
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 4px;
+  width: fit-content;
+  cursor: pointer;
+  align-self: center;
+}
+
+.user-details-container {
+  color: white;
+  width: fit-content;
+  align-self: center;
+  padding-top: 4px;
+}
+
+.user-details-container > p {
+  color: white;
+  margin: 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.user-details-container > form > input, button {
+  padding: 3px;
+  margin: 6.5px;
+  border-radius: 2px;
+}
+
+.user-details-container > form > input {
+  width: 200px;
+  text-align: center;
+}
+
+.cart-card {
+  text-align: center;
+  padding: 10px;
+  margin: 30px;
+  margin-bottom: auto;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.507);
+  font-weight: bold;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 20px;
+  position: relative;
+  width: 300px;
+  height: 500px;
+}
+
+.cart-card > img {
+  border-radius: 10px;
+  opacity: 1;
+  display: flex;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
