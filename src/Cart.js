@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GuitarCard from "./GuitarCard";
 import OrderCard from './OrderCard';
 
-function Cart({guitarsInCart, cartTotal, setGuitarsInCart, user, handleCartAfterOrderPlaced}) {
+function Cart({guitarsInCart, cartTotal, setGuitarsInCart, user, handleCartAfterOrderPlaced, customers}) {
 
     document.body.style.backgroundImage = "url('https://wallpaperaccess.com/full/733839.jpg')"
     document.body.style.backgroundRepeat = "repeat"
@@ -18,7 +18,7 @@ function Cart({guitarsInCart, cartTotal, setGuitarsInCart, user, handleCartAfter
     const renderGuitarsInCart = guitarsInCart.map(guitar =>
         <GuitarCard guitar={guitar} isInCart={true} key={guitar.id} handleDeleteFromCartClick={handleDeleteFromCartClick} placeOrder={placeOrder}
         />)
-
+    
     const placeOrder = () => {
         if (user.length > 0 && guitarsInCart.length > 0) {
             guitarsInCart.forEach(guitar => {
@@ -31,22 +31,22 @@ function Cart({guitarsInCart, cartTotal, setGuitarsInCart, user, handleCartAfter
             })
             .then(res => res.json())
             .then(handleCartAfterOrderPlaced)
-            })
-
+        })
             alert('Order placed successfully!');
         }
     }
 
-    useEffect(() => {
-            if (user.length > 0) {
-                fetch(`http://localhost:9292/orders/${user[0].id}`)
-                .then(res => res.json())
-                .then(userOrders => setUserOrders(userOrders))
-            }
-        }, [userOrders])
+    if (user.length > 0) {
+        useEffect(() => {
+            fetch(`http://localhost:9292/orders/${user[0].id}`)
+            .then(res => res.json())
+            .then(userOrders => setUserOrders(userOrders))
+        }, [userOrders, user])
+    }
 
     const renderUserOrders = userOrders.map(order => 
         <OrderCard order={order} key={order.order_number}/>)
+
 
     const isValid = Boolean(guitarsInCart.length > 0 && user.length > 0)
 

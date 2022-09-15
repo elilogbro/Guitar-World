@@ -19,7 +19,9 @@ function AppRouter() {
         fetch("http://localhost:9292/guitars")
             .then(res => res.json())
             .then(guitars => setGuitars(guitars));
+    }, []);
 
+    useEffect(() => {
         fetch("http://localhost:9292/customers")
             .then(res => res.json())
             .then(customers => setCustomers(customers));
@@ -44,6 +46,7 @@ function AppRouter() {
 
     const handleDeletedUser = (userId) => {
         setCustomers(customers.filter(customer => customer.id !== userId))
+        setUser([])
     }
 
     const handleUpdatedUser = (updatedUser) => {
@@ -81,6 +84,7 @@ function AppRouter() {
                         setGuitarsInCart={setGuitarsInCart}
                         user={user}
                         handleCartAfterOrderPlaced={handleCartAfterOrderPlaced}
+                        customers={customers}
                     />}
                 />
                 { user.length > 0 &&

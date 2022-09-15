@@ -22,7 +22,7 @@ function Login({setUser, customers, user}) {
   }
 
   let navigate = useNavigate();
-
+  
   const handleLogin = (e) => {
     e.preventDefault();
     
@@ -34,7 +34,7 @@ function Login({setUser, customers, user}) {
     let path = '/';
     navigate(path);
   }
-
+  
   return (
     <div className="login-container">
       { user.length > 0 ? console.log("Logged in successfully!") 

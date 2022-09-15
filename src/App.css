@@ -234,26 +234,40 @@ body {
 .user-details-container {
   color: white;
   width: 30%;
-  min-height: 200px;
-  max-height: 200px;
+  height: fit-content;
   align-self: center;
   padding-top: 4px;
   border-style: solid;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: 224px;
 }
 
 .user-details-container > p {
   color: white;
-  margin: 10px;
+  margin: 6px;
   font-size: 20px;
   display: flex;
-  justify-content: center;
+  width: fit-content;
+  align-self: center;
 }
 
 .user-details-container > form > input, button {
   padding: 3px;
   margin: 6.5px;
   border-radius: 2px;
+  background-color:rgb(255, 255, 255);
+  margin-top: 10px;
+}
+
+.user-details-container > form > button {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.user-details-container > form > button:hover {
+  opacity: 100%;
 }
 
 .user-details-container > form > input {
@@ -304,6 +318,10 @@ body {
   height: 680px;
   overflow: auto;
   background-color: rgba(255, 255, 255, 0.305);
+}
+
+.overflow-container {
+  height: 728px;
 }
 
 .order-cards {
