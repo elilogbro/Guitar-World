@@ -41,7 +41,7 @@ function Cart({guitarsInCart, cartTotal, setGuitarsInCart, user, handleCartAfter
             fetch(`http://localhost:9292/orders/${user[0].id}`)
             .then(res => res.json())
             .then(userOrders => setUserOrders(userOrders))
-        }, [userOrders, user])
+        }, [userOrders])
     }
 
     const renderUserOrders = userOrders.map(order => 
@@ -52,23 +52,23 @@ function Cart({guitarsInCart, cartTotal, setGuitarsInCart, user, handleCartAfter
 
     return (
         <div className="cart-container">
-                <div className="guitar-cart-container">
-                    <div className="cart-headers">
-                        <h2>Total: ${cartTotal}</h2>
-                        <button id="order-btn" onClick={placeOrder} disabled={!isValid}>{isValid ? "Place order" : "Please log in & add guitars"}
-                        </button>
-                    </div>
-                        <h1>Cart Items</h1>
-                    <div className="guitars-in-cart">
-                        {renderGuitarsInCart}
-                    </div>
+            <div className="guitar-cart-container">
+                <div className="cart-headers">
+                    <h2>Total: ${cartTotal}</h2>
+                    <button id="order-btn" onClick={placeOrder} disabled={!isValid}>{isValid ? "Place order" : "Please log in & add guitars"}
+                    </button>
                 </div>
-                <div className="order-container">
-                    <h1>Order History</h1>
-                    <div className="overflow-container">
-                        {renderUserOrders}
-                    </div>
+                    <h1>Cart Items</h1>
+                <div className="guitars-in-cart">
+                    {renderGuitarsInCart}
                 </div>
+            </div>
+            <div className="order-container">
+                <h1>Order History</h1>
+                <div className="overflow-container">
+                    {renderUserOrders}
+                </div>
+            </div>
         </div>
     )
 }
