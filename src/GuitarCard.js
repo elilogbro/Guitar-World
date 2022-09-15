@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuitarCard({guitar, handleAddToCartClick, isInCart, handleDeleteFromCartClick, isInOrders}) {
+function GuitarCard({guitar, handleAddToCartClick, isInCart, handleDeleteFromCartClick}) {
 
     return (
         <div className={isInCart ? "cart-card" : "card"}>
@@ -10,7 +10,7 @@ function GuitarCard({guitar, handleAddToCartClick, isInCart, handleDeleteFromCar
             </div>
             <p id="name-container">{guitar.name}</p>
             <p>${guitar.price}</p>
-            {( !isInCart && !isInOrders ) &&
+            { !isInCart  &&
                 ( <button id="add-to-cart-btn" onClick={ () => handleAddToCartClick(guitar) }>Add To Cart</button> )
             }
             { isInCart && 

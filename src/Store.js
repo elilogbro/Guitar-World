@@ -18,7 +18,6 @@ function Store({guitars, handleAddToCartClick,}) {
             key={guitar.id}
             handleAddToCartClick={handleAddToCartClick}
             isInCart={false}
-            isInOrders={false}
         />
     )
     

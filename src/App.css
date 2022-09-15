@@ -141,45 +141,27 @@ body {
 
 .cart-container {
   display: flex;
-  flex-direction: column;
-  align-items: left;
-}
-
-.cart-header > h2, #order-btn {
-  color: rgba(255, 255, 255, 0.925);
-  width: fit-content;
-  background-color: rgb(0, 0, 0);
-  padding: 10px;
-  margin: 0;
-  margin-left: 6px;
-  margin-top: 6px;
-  margin-right: 6px;
-  font-size: 16px;
-  height: fit-content;
-}
-
-.cart-header {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  border-style: solid;
-  background-color:rgba(255, 255, 255, 0.39);
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 #order-btn {
   cursor: pointer;
-  margin-bottom: 6px;
   border-style: solid;
   font-size: 14px;
-  border-color: rgba(185, 54, 54, 0.726)
+  border-color: rgba(0, 0, 0, 0.726);
+  opacity: 60%;
+}
+
+#order-btn:hover {
+  opacity: 100%;
 }
 
 .guitar-cart-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  width: fit-content;
+  align-items: center;
 }
 
 .search-container input {
@@ -312,5 +294,91 @@ body {
 
 .cart-card > #name-container {
   min-height: 70px;
+}
+
+.overflow-container, .guitars-in-cart {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #333333;
+  width: fit-content;
+  height: 680px;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.305);
+}
+
+.order-cards {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  border-bottom: solid;
+  font-size: 20px;
+  margin: 8px;
+  padding-bottom: 6px;
+  border-width: 6px;
+}
+
+.order-cards > img {
+  width: 300px;
+  align-self: center;
+  border-radius: 10px;
+  border-style: solid;
+}
+
+.order-cards > p {
+  margin: 6px;
+  border-style: solid;
+  width: fit-content;
+  align-self: center;
+  padding: 2px;
+  background-color: #333333;
+  border-radius: 12px;
+  color: white;
+  border-color:#333333;
+  font-weight: bold;
+}
+
+.cart-headers > h2, #order-btn {
+  color: rgba(255, 255, 255, 0.925);
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.534);
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+.cart-headers > h2 {
+  padding: 4px;
+  padding-bottom: 4px;
+  margin: 0;
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+.order-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-headers {
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-width: 2px;
+  background-color: rgba(185, 54, 54, 0.726);
+  border-color: rgb(0, 0, 0);
+  border-radius: 12px;
+}
+
+.guitar-cart-container > h1 {
+  border-bottom: solid;
+  color: white;
+}
+
+.order-container > h1 {
+  border-bottom: solid;
+  color: white;
+  width: fit-content;
+  align-self: center;
 }
 
