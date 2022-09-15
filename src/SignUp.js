@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 function SignUp({createAnAccount}) {
 
-
   document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2016/09/27/23/03/guitar-1699501_960_720.jpg')"
   document.body.backgroundRepeat = "no-repeat"
   document.body.style.backgroundSize = "cover"
@@ -13,43 +12,43 @@ function SignUp({createAnAccount}) {
     address: "",
     email: "",
     password: ""
-})
+  })
 
-const isValid = Boolean(formData.name && formData.phone && formData.address && formData.email && formData.password);
+  const isValid = Boolean(formData.name && formData.phone && formData.address && formData.email && formData.password);
 
-const handleNewAccount = (e) => {
-    e.preventDefault();
-    if (isValid) {
-        fetch('http://localhost:9292/customers', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(res => res.json())
-        .then(createAnAccount(formData))
+  const handleNewAccount = (e) => {
+      e.preventDefault();
+      if (isValid) {
+          fetch('http://localhost:9292/customers', {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify(formData)
+          })
+          .then(res => res.json())
+          .then(createAnAccount(formData))
+
+      setFormData({
+        name: "",
+        phone: "",
+        address: "",
+        email: "",
+        password: ""
+      })
+
+      alert('Signed up successfully!');
+      }
+  }
+
+  const handleFormChange = (e) => {
+    const key = e.target.name
+    const value = e.target.value
 
     setFormData({
-      name: "",
-      phone: "",
-      address: "",
-      email: "",
-      password: ""
+        ...formData, [key] : value
     })
-
-    alert('Signed up successfully!');
-    }
-}
-
-const handleFormChange = (e) => {
-  const key = e.target.name
-  const value = e.target.value
-
-  setFormData({
-      ...formData, [key] : value
-  })
-}
+  }
 
   return (
     <div className="signup-container">
@@ -60,7 +59,7 @@ const handleFormChange = (e) => {
           <input type="text" name="address" value={formData.address} onChange={handleFormChange} placeholder="e.g. 2636 E Shore Dr San Francisco, CA 81091"></input>
           <input type="text" name="email" value={formData.email} onChange={handleFormChange} placeholder="e.g. johnsmith@gmail.com"></input>
           <input type="password" name="password" value={formData.password} onChange={handleFormChange} placeholder="Enter a unique password..."></input>
-          <button>{isValid ? "Sign Up!" : "Please fill out all fields"}</button>
+          <button>{ isValid ? "Sign Up!" : "Please fill out all fields" }</button>
       </form>
     </div>
   )

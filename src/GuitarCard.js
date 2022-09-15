@@ -1,7 +1,6 @@
 import React from "react";
 
 function GuitarCard({guitar, handleAddToCartClick, isInCart, handleDeleteFromCartClick, isInOrders}) {
-   
 
     return (
         <div className={isInCart ? "cart-card" : "card"}>
@@ -9,14 +8,14 @@ function GuitarCard({guitar, handleAddToCartClick, isInCart, handleDeleteFromCar
             <div className="details-container">
                 <div id="guitar-details">{guitar.description}</div>
             </div>
-            <p>{guitar.name}</p>
+            <p id="name-container">{guitar.name}</p>
             <p>${guitar.price}</p>
-            {(!isInCart && !isInOrders) && (
-                <button id="add-to-cart-btn" onClick={() => handleAddToCartClick(guitar)}>Add To Cart</button>
-            )}
-            {isInCart && (
-                <button id="delete-btn" onClick={() => handleDeleteFromCartClick(guitar)}>Remove From Cart</button>
-            )}
+            {( !isInCart && !isInOrders ) &&
+                ( <button id="add-to-cart-btn" onClick={ () => handleAddToCartClick(guitar) }>Add To Cart</button> )
+            }
+            { isInCart && 
+                ( <button id="delete-btn" onClick={ () => handleDeleteFromCartClick(guitar) }>Remove From Cart</button> )
+            }
         </div>
     )
 }

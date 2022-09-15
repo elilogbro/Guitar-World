@@ -10,42 +10,43 @@ function Login({setUser, customers, user}) {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
-})
-
-const handleChange = (e) => {
-  const key = e.target.name
-  const value = e.target.value
-
-  setFormData({
-      ...formData, [key] : value
   })
-}
 
-let navigate = useNavigate();
+  const handleChange = (e) => {
+    const key = e.target.name
+    const value = e.target.value
 
-const handleLogin = (e) => {
-  e.preventDefault();
-  
-  if (user.length === 0) {
-    const findUser = customers.filter(customer => (customer.email && customer.password) === (formData.email && formData.password))
-    setUser(findUser)
+    setFormData({
+        ...formData, [key] : value
+    })
   }
-  
-  let path = '/';
-  navigate(path);
-}
+
+  let navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+    if (user.length === 0) {
+      const findUser = customers.filter(customer => (customer.email && customer.password) === (formData.email && formData.password))
+      setUser(findUser)
+    }
+    
+    let path = '/';
+    navigate(path);
+  }
 
   return (
     <div className="login-container">
-      {user.length > 0 ? console.log("Logged in successfully!") :
-      <div className="login-container-inner">
-          <h2>Login to your account</h2>
-          <form onSubmit={handleLogin}>
-            <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Enter email..." />
-            <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Enter password..." />
-            <button>Sign In</button>
-          </form>
-        </div> 
+      { user.length > 0 ? console.log("Logged in successfully!") 
+        :
+        <div className="login-container-inner">
+            <h2>Login to your account</h2>
+            <form onSubmit={handleLogin}>
+              <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder="Enter email..." />
+              <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Enter password..." />
+              <button>Sign In</button>
+            </form>
+          </div> 
       }
     </div>
   )

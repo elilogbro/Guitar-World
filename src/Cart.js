@@ -3,7 +3,7 @@ import GuitarCard from "./GuitarCard";
 
 function Cart({guitarsInCart, cartTotal, setGuitarsInCart}) {
 
-    document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2017/02/07/09/02/wood-2045379_960_720.jpg')"
+    document.body.style.backgroundImage = "url('https://wallpaperaccess.com/full/733839.jpg')"
     document.body.style.backgroundRepeat = "repeat"
     document.body.style.backgroundSize = 'auto'
     
@@ -17,8 +17,10 @@ function Cart({guitarsInCart, cartTotal, setGuitarsInCart}) {
 
     return (
         <div className="cart-container">
-            <h2>Total: ${cartTotal}</h2>
-            <span id="order-btn">Place Order</span>
+            <div className="cart-header">
+                <h2>Total: ${cartTotal}</h2>
+                <span id="order-btn">Place Order</span>
+            </div>
             <div className="guitar-cart-container">
                 {renderGuitarsInCart}
             </div>

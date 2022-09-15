@@ -12,8 +12,6 @@ function Store({guitars, handleAddToCartClick,}) {
 
     const filterGuitars = guitars.filter(guitar => guitar.name.toLowerCase().includes(searchQuery.toLowerCase()))
 
-
-
     const renderCards = filterGuitars.map(guitar =>
         <GuitarCard
             guitar={guitar}
@@ -24,12 +22,12 @@ function Store({guitars, handleAddToCartClick,}) {
         />
     )
     
-    return(
+    return (
         <div className="search-and-cards">
-                <Search
-                    searchQuery={searchQuery}
-                    setSearchQuery={setSearchQuery}    
-                />
+            <Search
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}    
+            />
             <div className="cards-container">
                 {renderCards}
             </div>

@@ -9,6 +9,7 @@ import Login from "./Login";
 import GuitarForm from "./GuitarForm";
 
 function AppRouter() {
+    
     const [guitars, setGuitars] = useState([])
     const [customers, setCustomers] = useState([])
     const [guitarsInCart, setGuitarsInCart] = useState([])
@@ -16,12 +17,12 @@ function AppRouter() {
 
     useEffect(() => {
         fetch("http://localhost:9292/guitars")
-        .then(res => res.json())
-        .then(guitars => setGuitars(guitars));
+            .then(res => res.json())
+            .then(guitars => setGuitars(guitars));
 
         fetch("http://localhost:9292/customers")
-        .then(res => res.json())
-        .then(customers => setCustomers(customers));
+            .then(res => res.json())
+            .then(customers => setCustomers(customers));
     }, []);
 
     const sellGuitar = (newGuitar) => {
@@ -29,19 +30,25 @@ function AppRouter() {
     }
 
     const handleAddToCartClick = (guitar) => {
-        setGuitarsInCart([...guitarsInCart, guitar])
+        if (guitarsInCart.includes(guitar)) {
+            console.log("guitar is already in cart")
+        }
+        else {
+            setGuitarsInCart([...guitarsInCart, guitar])
+        }
     }
       
     const createAnAccount = (newCustomer) => {
-    setCustomers([...customers, newCustomer])
+        setCustomers([...customers, newCustomer])
     }
 
     const handleDeletedUser = (userId) => {
-    setCustomers(customers.filter(customer => customer.id !== userId))
+        setCustomers(customers.filter(customer => customer.id !== userId))
     }
 
     const handleUpdatedUser = (updatedUser) => {
         const updateCustomers = customers.map(customer => customer.id === updatedUser.id ? updatedUser : customer)
+
         setCustomers(updateCustomers)
         setUser([updatedUser])
     }
@@ -51,7 +58,10 @@ function AppRouter() {
 
     return (
         <div>
-            <Links cartTotal={cartTotal} user={user}/>
+            <Links
+                cartTotal={cartTotal}
+                user={user}
+            />
             <Routes>
                 <Route exact path="/" element={
                     <Store 
@@ -66,13 +76,15 @@ function AppRouter() {
                         setGuitarsInCart={setGuitarsInCart}
                     />}
                 />
-                {user.length > 0 && <Route path="/account" element={
-                    <Account
-                        user={user}
-                        handleDeletedUser={handleDeletedUser}
-                        handleUpdatedUser={handleUpdatedUser}
-                    />}
-                />}
+                { user.length > 0 &&
+                    <Route path="/account" element={
+                        <Account
+                            user={user}
+                            handleDeletedUser={handleDeletedUser}
+                            handleUpdatedUser={handleUpdatedUser}
+                        />}
+                    />
+                }
                 <Route path="/guitar-form" element={
                     <GuitarForm
                         sellGuitar={sellGuitar}
@@ -90,7 +102,9 @@ function AppRouter() {
                         createAnAccount={createAnAccount}
                     />}
                 />
-                <Route path="*" element={<Navigate to="/" replace />}/>
+                <Route path="*" element={
+                    <Navigate to="/" replace />}
+                />
             </Routes>
         </div>
     )
