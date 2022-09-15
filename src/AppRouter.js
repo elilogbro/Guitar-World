@@ -52,7 +52,11 @@ function AppRouter() {
         setCustomers(updateCustomers)
         setUser([updatedUser])
     }
-    
+
+    const handleCartAfterOrderPlaced = () => {
+        setGuitarsInCart([])
+    }
+
     const initialPrice = 0;
     const cartTotal = guitarsInCart.map(guitar => parseFloat(guitar.price)).reduce((previous, current) => previous + current, initialPrice).toFixed(2)
 
@@ -71,9 +75,11 @@ function AppRouter() {
                 />
                 <Route path="/cart" element={
                     <Cart
-                        guitarsInCart={guitarsInCart}
-                        cartTotal={cartTotal}
-                        setGuitarsInCart={setGuitarsInCart}
+                    guitarsInCart={guitarsInCart}
+                    cartTotal={cartTotal}
+                    setGuitarsInCart={setGuitarsInCart}
+                    user={user}
+                    handleCartAfterOrderPlaced={handleCartAfterOrderPlaced}
                     />}
                 />
                 { user.length > 0 &&

@@ -4,7 +4,7 @@ import GuitarCard from './GuitarCard';
 
 function Store({guitars, handleAddToCartClick,}) {
     
-    document.body.style.backgroundImage = "url('https://images.pexels.com/photos/172292/pexels-photo-172292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+    document.body.style.backgroundImage = "url('https://img.freepik.com/premium-vector/knitted-dark-gray-background-with-repeating-texture-merino-wool-black-vector-seamless-pattern_278395-576.jpg')";
     document.body.style.backgroundRepeat = "repeat"
     document.body.style.backgroundSize = 'auto'
 
