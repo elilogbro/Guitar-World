@@ -46,7 +46,7 @@ function Cart({guitarsInCart, cartTotal, setGuitarsInCart, user, handleCartAfter
         <div className="cart-container">
             <div className="cart-header">
                 <h2>Total: ${cartTotal}</h2>
-                <button id="order-btn" onClick={placeOrder} disabled={!isValid}>{isValid ? "Place Order" : "Log in & add guitars"}</button>
+                <button id="order-btn" onClick={placeOrder} disabled={!isValid}>{isValid ? "Place order" : "Please log in & add guitars"}</button>
             </div>
             <div className="guitar-cart-container">
                 {renderGuitarsInCart}
